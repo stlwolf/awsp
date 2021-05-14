@@ -33,7 +33,7 @@ const promptProfileChoice = (data) => {
       name: 'profile',
       message: 'Choose a profile',
       choices: profiles,
-      default: process.env.AWS_PROFILE || defaultProfileChoice
+      default: process.env.AWS_DEFAULT_PROFILE || process.env.AWS_PROFILE || defaultProfileChoice
     }
   ];
 
