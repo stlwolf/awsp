@@ -1,6 +1,9 @@
 #!/bin/sh
 
-AWS_PROFILE="$AWS_PROFILE" _awsp_prompt
+# AWS_PROFILE="$AWS_PROFILE" _awsp_prompt
+AWS_PROFILE="$AWS_PROFILE"
+CURRENT=$(cd $(dirname $0);pwd)
+"$CURRENT/index.js"
 
 if [ $# -ge 1 ]
 then
