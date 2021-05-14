@@ -2,11 +2,19 @@
 
 AWS_PROFILE="$AWS_PROFILE" _awsp_prompt
 
-selected_profile="$(cat ~/.awsp)"
-
-if [ -z "$selected_profile" ]
+if [ $# -ge 1 ]
 then
-  unset AWS_PROFILE
+  export AWS_PROFILE="$1"
+  export AWS_DEFAULT_PROFILE="$1"
+  echo "set profile: $AWS_PROFILE"
 else
-  export AWS_PROFILE="$selected_profile"
+  selected_profile="$(cat ~/.awsp)"
+  if [ -z "$selected_profile" ]
+  then
+    unset AWS_PROFILE
+    unset AWS_DEFAULT_PROFILE
+  else
+    export AWS_PROFILE="$selected_profile"
+    export AWS_DEFAULT_PROFILE="$selected_profile"
+  fi
 fi
