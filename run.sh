@@ -2,8 +2,6 @@
 
 # AWS_PROFILE="$AWS_PROFILE" _awsp_prompt
 AWS_PROFILE="$AWS_PROFILE"
-CURRENT=$(cd $(dirname $0);pwd)
-"$CURRENT/index.js"
 
 if [ $# -ge 1 ]
 then
@@ -11,7 +9,11 @@ then
   export AWS_DEFAULT_PROFILE="$1"
   echo "set profile: $AWS_PROFILE"
 else
+  CURRENT=$(cd $(dirname $0);pwd)
+  "$CURRENT/index.js"
+
   selected_profile="$(cat ~/.awsp)"
+  
   if [ -z "$selected_profile" ]
   then
     unset AWS_PROFILE
