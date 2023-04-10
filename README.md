@@ -19,12 +19,12 @@ https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 ## Setup
 
 ```sh
-npm install -g awsp
+npm i
 ```
 
 Add the following to your `.bashrc` or `.zshrc` config
 ```sh
-alias awsp="source _awsp"
+alias awsp="source ${CLONE_DIR}/awsp/run.sh"
 ```
 
 ## Usage
@@ -37,13 +37,13 @@ For better visibility into what your shell is set to it's helpful to configure y
 
 <img src="screenshot.png" width="300">
 
-Here's a sample of my zsh prompt config using oh-my-zsh themes
+Here's a sample of my bash prompt config
 
 ```sh
-function aws_prof {
-  local profile="${AWS_PROFILE:=default}"
+aws_prof() {
+  local profile="${AWS_PROFILE:-default}"
 
-  echo "%{$fg_bold[blue]%}aws:(%{$fg[yellow]%}${profile}%{$fg_bold[blue]%})%{$reset_color%} "
+  echo -e "\033[1;34maws:(\033[1;33m${profile}\033[1;34m)\033[0m"
 }
 ```
 
